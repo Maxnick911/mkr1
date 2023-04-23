@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Book Store - Edit Category</title>
+    </head>
+    <body>
+        <div>
+            <form method="post" action="/categories/save">
+                <input type="hidden" name="id" value="{{category.id}}"/>
+                <input type="text" name="name" value="{{category.name}}"/>
+                <button type="submit">Save changes</button>
+            </form>
+        </div>
+    </body>
+</html>

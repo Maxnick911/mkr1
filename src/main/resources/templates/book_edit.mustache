@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Book Store - Edit Book</title>
+    </head>
+    <body>
+        <div>
+            <form method="post" action="/books/save">
+                <input type="hidden" name="id" value="{{book.id}}"/>
+                <input type="text" name="title" value="{{book.title}}"/>
+                <input type="text" name="author" value="{{book.author}}"/>
+                <input type="number" name="price" step="any" value="{{book.price}}"/>
+                <select name="category_id">
+                {{#categories}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/categories}}
+                </select>
+                <button type="submit">Save changes</button>
+            </form>
+        </div>
+    </body>
+</html>

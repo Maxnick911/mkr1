@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Book Store - Books</title>
+    </head>
+    <body>
+        <div>
+            <a href="/">Main Page</a>
+            <a href="/categories/">Categories</a>
+        </div>
+        <hr>
+        <div>
+            <form method="post" action="/books/add">
+                <input type="text" name="title" placeholder="Enter title"/>
+                <input type="text" name="author" placeholder="Enter author"/>
+                <input type="number" name="price" step="any" placeholder="Enter price"/>
+                <select name="category_id">
+                {{#categories}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/categories}}
+                </select>
+                <button type="submit">Add book</button>
+            </form>
+        </div>
+        <hr>
+        <div>Books List:</div>
+        <table border="1" cellspacing="0" cellpadding= "10">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#books}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{title}}</td>
+                        <td>{{author}}</td>
+                        <td>{{price}}</td>
+                        <td>
+                            {{#categories}}
+                                {{name}}<br>
+                            {{/categories}}
+                        </td>
+                        <td>
+                            <form method="post" action="/books/delete/{{id}}">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="get" action="/books/edit/{{id}}">
+                                <button type="submit">Edit</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/books}}
+            </tbody>
+        </table>
+    </body>
+</html>

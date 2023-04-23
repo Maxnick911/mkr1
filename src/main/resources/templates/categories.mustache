@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Book Store - Categories</title>
+    </head>
+        <div>
+            <a href="/">Main Page</a>
+            <a href="/books/">Books</a>
+        </div>
+        <hr>
+        <div>
+            <form method="post" action="/categories/add">
+                <input type="text" name="name" placeholder="Enter Category Name"/>
+                <button type="submit">Add Category</button>
+            </form>
+        </div>
+        <hr>
+        <div>Category List:</div>
+        <table border="1" cellspacing="0" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Book</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#categories}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{name}}</td>
+                        <td>
+                            <ul>
+                                {{#books}}
+                                    <li>{{title}}</li>
+                                {{/books}}
+                            </ul>
+                        </td>
+                        <td>
+                            <form method="post" action="/categories/delete/{{id}}">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="get" action="/categories/edit/{{id}}">
+                                <button type="submit">Edit</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/categories}}
+            </tbody>
+        </table>
+    </body>
+</html>
